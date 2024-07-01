@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SE147 Does JS Loops/Functions</title>
+</head>
+<body>
+
+    <script>
+
+// shopping app
+
+// Conditional Statement to Check if User is Logged In
+let isLoggedIn = true; // Set to false initially, change to true when logged-in
+
+function addToCart(product, price) {
+  if (isLoggedIn) {
+    cart.push(product);
+    cartPrices.push(price);
+    console.log(`${product} has been added to your cart.`);
+  } else {
+    console.log("You must be logged in to add items to the cart.");
+  }
+}
+
+// Loop to Display Products and Add to Cart
+
+let products = ["Laptop", "Tablet", "PlayStation", "Xbox"];
+let productPrices = [1000, 300, 500, 500];
+let cart = [];
+let cartPrices = [];
+
+function displayProducts() {
+  console.log("Available products:");
+  for (let i = 0; i < products.length; i++) {
+    console.log(`${i + 1}. ${products[i]} - $${productPrices[i]}`);
+  }
+}
+
+function addProductToCart(productName) {
+  for (let i = 0; i < products.length; i++) {
+    if (products[i] === productName) {
+      addToCart(products[i], productPrices[i]);
+      return;
+    }
+  }
+  console.log("Product not found.");
+}
+
+// calculating total
+
+function calculateTotalCost() {
+  let totalCost = 0;
+  for (let price of cartPrices) {
+    totalCost += price;
+  }
+  console.log(`Total cost: $${totalCost}`);
+}
+
+// shop away
+
+displayProducts();
+addProductToCart("PlayStation");
+addProductToCart("Xbox"); 
+calculateTotalCost();
+
+// banking app
+
+// deposit function
+
+let balance = 0;
+
+function deposit(amount) {
+  balance += amount;
+  console.log(`Deposited $${amount}. New balance: $${balance}`);
+}
+
+// withdrawal function
+
+function withdraw(amount) {
+  if (amount <= balance) {
+    balance -= amount;
+    console.log(`Withdrew $${amount}. New balance: $${balance}`);
+  } else {
+    console.log("Insufficient balance.");
+  }
+}
+
+// check balance function
+
+function checkBalance() {
+  console.log(`Current balance: $${balance}`);
+}
+
+
+deposit(200);
+withdraw(50);
+checkBalance();
+
+    </script>
+</body>
+</html>
